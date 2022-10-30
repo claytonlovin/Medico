@@ -9,11 +9,11 @@ class ContatoRepository:
         self.db = db
 
     @staticmethod
-    def get_all(db: Session) -> list[Contato]:
+    def listaContatos(db: Session) -> list[Contato]:
         return db.query(Contato).all()
 
     @staticmethod
-    def get_by_id(db: Session, id: int) -> Contato:
+    def listaContatosId(db: Session, id: int) -> Contato:
         return db.query(Contato).filter(Contato.id_contato == id).first()
 
     @staticmethod

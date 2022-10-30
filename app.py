@@ -14,14 +14,14 @@ Base.metadata.create_all(bind=engine) # Criação do banco de dados
 app = FastAPI()
 
 @app.get("/contato/", response_model=list[ContatoResponse]) # Listagem de todos os contatos
-def get_all(db: Session = Depends(get_db)):
-    Contato = ContatoRepository.get_all(db)
+def listaContatos(db: Session = Depends(get_db)):
+    Contato = ContatoRepository.listaContatos(db)
     return [ContatoResponse.from_orm(contato) for contato in Contato]
     
 # GET /contato/{id} - Listagem de um contato específico
 @app.get("/contato/{id}", response_model=ContatoResponse) # Listagem de um contato específico
-def get_by_id(id_contato: int, db: Session = Depends(get_db)):
-    contato = ContatoRepository.get_by_id(db, id_contato)
+def listaContatosId(id_contato: int, db: Session = Depends(get_db)):
+    contato = ContatoRepository.listaContatosId(db, id_contato)
     if not contato:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Contato não encontrado")
     return ContatoResponse.from_orm(contato)
