@@ -7,10 +7,10 @@ from db import Base
 
 class Contato(Base):
     __tablename__ = "contatos"
-
-    id_contato = Column(Integer, primary_key=True, index=True)
+    id_contato = Column(Integer, primary_key=True, index=True, autoincrement=True)
     telefone = Column(String(11))
     email = Column(String(50))
+
 
 class Medico(Base):
     __tablename__ = "medicos"
