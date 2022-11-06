@@ -6,4 +6,4 @@ Bricando um pouco com o FastAPI. Na aplicação estou criando uma pequan API sim
 
 
 
-<img src="demo/demo.png">
+<img src="public/demo/demo.png">

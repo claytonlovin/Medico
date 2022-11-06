@@ -12,3 +12,5 @@ class ContatoResponse(ConatoBase):
 
 class ContatoRequest(ConatoBase):
     ...
+
+

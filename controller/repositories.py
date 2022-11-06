@@ -38,3 +38,38 @@ class ContatoRepository:
             return True
         return False
 
+
+class MedicoRepository:
+    @staticmethod
+    def __init__(self, db: Session):
+        self.db = db
+
+    @staticmethod
+    def listaMedicos(db: Session) -> list[Medico]:
+        return db.query(Medico).all()
+    # 
+    @staticmethod
+    def listaMedicosId(db: Session, id: int) -> Medico:
+        return db.query(Medico).filter(Medico.id_medico == id).first()
+    # Criação de um médico
+    @staticmethod
+    def create(db: Session, medico: Medico) -> Medico:
+        if medico.id_medico:
+            db.merge(Medico)
+        else:
+            db.add(medico)
+        db.commit()
+        return medico
+    
+    @staticmethod
+    def update(db: Session, id_medico: int) -> bool:
+        return db.query(Medico).filter(Medico.id_medico == id_medico).first() is not None
+
+    @staticmethod
+    def delete(db: Session, id_medico: int) -> bool:
+        medico = db.query(Medico).filter(Medico.id_medico == id_medico).first()
+        if medico:
+            db.delete(medico)
+            db.commit()
+            return True
+        return False

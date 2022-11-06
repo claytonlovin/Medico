@@ -1,12 +1,16 @@
 from datetime import datetime
 from sqlite3 import Date
 from xmlrpc.client import DateTime
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, Float, Date, Time, Text, Enum, Table, ForeignKeyConstraint
-
+from sqlalchemy.orm import mapper
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from model.db import Base
+    
+    
+
 
 class Contato(Base):
     __tablename__ = "contatos"
+
     id_contato = Column(Integer, primary_key=True, index=True, autoincrement=True)
     telefone = Column(String(11))
     email = Column(String(50))
@@ -58,6 +62,3 @@ class Consulta(Base):
     data_consulta = Column(String, nullable=False)
     data_retorno = Column(String, nullable=True)
     id_receita = Column(Integer, ForeignKey(Receita.id_receita))
-    
-    
-    
