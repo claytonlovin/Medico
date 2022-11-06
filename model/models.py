@@ -3,7 +3,7 @@ from sqlite3 import Date
 from xmlrpc.client import DateTime
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, Float, Date, Time, Text, Enum, Table, ForeignKeyConstraint
 
-from db import Base
+from model.db import Base
 
 class Contato(Base):
     __tablename__ = "contatos"

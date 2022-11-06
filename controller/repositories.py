@@ -1,6 +1,6 @@
 
 from sqlalchemy.orm import Session
-from models import Medico, Paciente, Contato, Medicamento, Receita, Consulta
+from model.models import Medico, Paciente, Contato, Medicamento, Receita, Consulta
 
 
 class ContatoRepository:

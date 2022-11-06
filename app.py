@@ -1,14 +1,34 @@
 from fastapi import FastAPI, Depends, HTTPException, status, Response
+from fastapi import FastAPI as MedicoAPI
 from sqlalchemy.orm import Session
-from models import Contato
-from db import engine, Base, get_db
-from repositories import ContatoRepository
-from schemas import ContatoResponse, ContatoRequest
+from model.models import Contato
+from model.db import engine, Base, get_db
+from controller.repositories import ContatoRepository
+from controller.schemas import ContatoResponse, ContatoRequest
 import uvicorn
+from fastapi.openapi.utils import get_openapi
 
 Base.metadata.create_all(bind=engine) # Criação do banco de dados
 
-app = FastAPI()
+
+app = MedicoAPI()
+
+
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    openapi_schema = get_openapi(
+        title="API Prontuário Médico",
+        version="2.5.0",
+        description="Desenvolvido por: Clayton Silva",
+        routes=app.routes,
+    )
+    openapi_schema["info"]["x-logo"] = {
+        "url": "https://cdn-icons-png.flaticon.com/512/4140/4140047.png"
+    }
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
 
 @app.get("/contato/", response_model=list[ContatoResponse]) # Listagem de todos os contatos
 def listaContatos(db: Session = Depends(get_db)):
@@ -50,5 +70,7 @@ def deletarContato(id_contato: int, db: Session = Depends(get_db)):
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 # EXECUÇÃO DO SERVIDOR
+app.openapi = custom_openapi
+
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
