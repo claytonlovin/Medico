@@ -73,3 +73,40 @@ class MedicoRepository:
             db.commit()
             return True
         return False
+
+
+# Paciente
+class PacienteRepository:
+    @staticmethod
+    def __init__(self, db: Session):
+        self.db = db
+
+    @staticmethod
+    def listaPacientes(db: Session) -> list[Paciente]:
+        return db.query(Paciente).all()
+    # 
+    @staticmethod
+    def listaPacientesId(db: Session, id: int) -> Paciente:
+        return db.query(Paciente).filter(Paciente.id_paciente == id).first()
+    # Criação de um paciente
+    @staticmethod
+    def create(db: Session, paciente: Paciente) -> Paciente:
+        if paciente.id_paciente:
+            db.merge(Paciente)
+        else:
+            db.add(paciente)
+        db.commit()
+        return paciente
+    
+    @staticmethod
+    def update(db: Session, id_paciente: int) -> bool:
+        return db.query(Paciente).filter(Paciente.id_paciente == id_paciente).first() is not None
+
+    @staticmethod
+    def delete(db: Session, id_paciente: int) -> bool:
+        paciente = db.query(Paciente).filter(Paciente.id_paciente == id_paciente).first()
+        if paciente:
+            db.delete(paciente)
+            db.commit()
+            return True
+        return False

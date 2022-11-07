@@ -1,15 +1,11 @@
 from fastapi import FastAPI, Depends, HTTPException, status, Response, APIRouter
-from fastapi.openapi.utils import get_openapi
-from fastapi import FastAPI as MedicoAPI
 from sqlalchemy.orm import Session
-import uvicorn
+
 
 # 
-from model.models import Contato, Medico
+from model.models import Medico
 from model.db import engine, Base, get_db
-from controller.repositories import ContatoRepository, MedicoRepository
-from controller.SchemasContato import ContatoResponse, ContatoRequest
-
+from controller.repositories import  MedicoRepository
 from controller.SchemasMedico import MedicoResponse, MedicoRequest
 
 router = APIRouter()
