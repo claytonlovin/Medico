@@ -1,6 +1,6 @@
 
 from sqlalchemy.orm import Session
-from model.models import Medico, Paciente, Contato, Medicamento, Receita, Consulta
+from model.models import Medico, Paciente, Contato, Medicamento, Receita, Consulta, Especialidade, Convenio
 
 
 class ContatoRepository:
@@ -38,6 +38,31 @@ class ContatoRepository:
             return True
         return False
 
+class EspecialidadeRepository:
+    @staticmethod
+    def __init__(self, db: Session):
+        self.db = db
+
+    @staticmethod
+    def listaEspecialidades(db: Session) -> list[Especialidade]:
+        return db.query(Especialidade).all()
+    # 
+    @staticmethod
+    def listaEspecialidadesId(db: Session, id: int) -> Especialidade:
+        return db.query(Especialidade).filter(Especialidade.id_especialidade == id).first()
+
+class ConvenioRepository:
+    @staticmethod
+    def __init__(self, db: Session):
+        self.db = db
+
+    @staticmethod
+    def listaConvenios(db: Session) -> list[Convenio]:
+        return db.query(Convenio).all()
+    # 
+    @staticmethod
+    def listaConveniosId(db: Session, id: int) -> Convenio:
+        return db.query(Convenio).filter(Convenio.id_convenio == id).first()
 
 class MedicoRepository:
     @staticmethod

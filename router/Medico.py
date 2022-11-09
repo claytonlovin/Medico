@@ -8,7 +8,7 @@ from model.db import engine, Base, get_db
 from controller.repositories import  MedicoRepository
 from controller.SchemasMedico import MedicoResponse, MedicoRequest
 
-router = APIRouter()
+router = APIRouter() 
 
 # LISTAR MEDICOS
 

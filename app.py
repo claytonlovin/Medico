@@ -4,10 +4,8 @@ from fastapi import FastAPI
 import uvicorn
 
 # 
-
 from model.db import engine, Base
-from router import Contato, Medico, Paciente
-
+from router import Especialidade, Convenio, Contato, Medico, Paciente
 
 Base.metadata.create_all(bind=engine) # Criação do banco de dados
 
@@ -29,13 +27,16 @@ def custom_openapi():
     return app.openapi_schema
 
 # IMPORTAR ROTAS
+app.include_router(Especialidade.router)
+app.include_router(Convenio.router)
 app.include_router(Contato.router)
 app.include_router(Medico.router)
 app.include_router(Paciente.router)
+
 
 
 # EXECUÇÃO DO SERVIDOR
 app.openapi = custom_openapi
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=8000, debug=True)
+    uvicorn.run(app, host='127.0.0.1', port=8000)

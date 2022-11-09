@@ -1,8 +1,9 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 class PacienteBase(BaseModel):
     nome: str
-    data_nascimento: str
+    data_nascimento: datetime
     cpf: str
     id_contato: int
     plano_saude: str
