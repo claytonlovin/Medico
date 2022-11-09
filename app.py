@@ -37,6 +37,3 @@ app.include_router(Paciente.router)
 
 # EXECUÇÃO DO SERVIDOR
 app.openapi = custom_openapi
-
-if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0')
