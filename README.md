@@ -4,10 +4,6 @@ Brincando um pouco com o FastAPI. Na aplicação estou criando uma pequena API s
 
 - [Demo](https://medico-production.up.railway.app/docs){:target="_blank"}
 
-<p></p>
-
-<img src="public/demo/demo.png">
-
 ### Bibliotecas utilizadas
 
 Nese projetos utilizamos a seguinte biliotecas:
