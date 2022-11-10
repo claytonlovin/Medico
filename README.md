@@ -2,13 +2,14 @@
 
 Brincando um pouco com o FastAPI. Na aplicação estou criando uma pequena API simulando um mini sistema de prontuário médico.
 
+- [Demo](https://medico-production.up.railway.app/docs) 
 <p></p>
 
 <img src="public/demo/demo.png">
 
 ### Bibliotecas utilizadas
 
-Nese projetos utilzamos a seguinte biliotecas:
+Nese projetos utilizamos a seguinte biliotecas:
 
 - [FastAPi](https://fastapi.tiangolo.com/) - Um framework Web para desenvolvimento de APIs RESTful em Python
 - [SQLAlchemy](https://www.sqlalchemy.org/) -  uma biblioteca de mapeamento objeto-relacional SQL em código aberto desenvolvido para a linguagem de programação Python.
