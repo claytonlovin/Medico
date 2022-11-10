@@ -2,7 +2,9 @@
 
 Brincando um pouco com o FastAPI. Na aplicação estou criando uma pequena API simulando um mini sistema de prontuário médico.
 
-- [Demo]("https://medico-production.up.railway.app/docs" target="_blank")
+- [Demo](https://medico-production.up.railway.app/docs)
+
+<p></p>
 
 ### Bibliotecas utilizadas
 
