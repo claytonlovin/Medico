@@ -10,10 +10,10 @@ Brincando um pouco com o FastAPI. Na aplicação estou criando uma pequena API s
 
 Nese projetos utilzamos a seguinte biliotecas:
 
-- [FastAPi] - Um framework Web para desenvolvimento de APIs RESTful em Python
-- [SQLAlchemy] -  uma biblioteca de mapeamento objeto-relacional SQL em código aberto desenvolvido para a linguagem de programação Python.
-- [pydantic] - Validação de dados e gerenciamento de configurações usando anotações de tipo Python.
-- [Uvicorn] - Uvicorn é uma implementação de servidor web ASGI para Python.
+- [FastAPi](https://fastapi.tiangolo.com/) - Um framework Web para desenvolvimento de APIs RESTful em Python
+- [SQLAlchemy](https://www.sqlalchemy.org/) -  uma biblioteca de mapeamento objeto-relacional SQL em código aberto desenvolvido para a linguagem de programação Python.
+- [pydantic](https://pydantic-docs.helpmanual.io/) - Validação de dados e gerenciamento de configurações usando anotações de tipo Python.
+- [Uvicorn](https://www.uvicorn.org/) - Uvicorn é uma implementação de servidor web ASGI para Python.
 
 ### Iniciando o projeto
 
