@@ -135,3 +135,116 @@ class PacienteRepository:
             db.commit()
             return True
         return False
+
+
+
+# Medicamento
+class MedicamentoRepository:
+    @staticmethod
+    def __init__(self, db: Session):
+        self.db = db
+
+    @staticmethod
+    def listaMedicamentos(db: Session) -> list[Medicamento]:
+        return db.query(Medicamento).all()
+    # 
+    @staticmethod
+    def listaMedicamentosId(db: Session, id: int) -> Medicamento:
+        return db.query(Medicamento).filter(Medicamento.id_medicamento == id).first()
+    # Criação de um medicamento
+    @staticmethod
+    def create(db: Session, medicamento: Medicamento) -> Medicamento:
+        if medicamento.id_medicamento:
+            db.merge(Medicamento)
+        else:
+            db.add(medicamento)
+        db.commit()
+        return medicamento
+    
+    @staticmethod
+    def update(db: Session, id_medicamento: int) -> bool:
+        return db.query(Medicamento).filter(Medicamento.id_medicamento == id_medicamento).first() is not None
+
+    @staticmethod
+    def delete(db: Session, id_medicamento: int) -> bool:
+        medicamento = db.query(Medicamento).filter(Medicamento.id_medicamento == id_medicamento).first()
+        if medicamento:
+            db.delete(medicamento)
+            db.commit()
+            return True
+        return False
+
+
+# consulta
+
+class ConsultaRepository:
+    @staticmethod
+    def __init__(self, db: Session):
+        self.db = db
+
+    @staticmethod
+    def listaConsultas(db: Session) -> list[Consulta]:
+        return db.query(Consulta).all()
+    # 
+    @staticmethod
+    def listaConsultasId(db: Session, id: int) -> Consulta:
+        return db.query(Consulta).filter(Consulta.id_consulta == id).first()
+    # Criação de um consulta
+    @staticmethod
+    def create(db: Session, consulta: Consulta) -> Consulta:
+        if consulta.id_consulta:
+            db.merge(Consulta)
+        else:
+            db.add(consulta)
+        db.commit()
+        return consulta
+    
+    @staticmethod
+    def update(db: Session, id_consulta: int) -> bool:
+        return db.query(Consulta).filter(Consulta.id_consulta == id_consulta).first() is not None
+
+    @staticmethod
+    def delete(db: Session, id_consulta: int) -> bool:
+        consulta = db.query(Consulta).filter(Consulta.id_consulta == id_consulta).first()
+        if consulta:
+            db.delete(consulta)
+            db.commit()
+            return True
+        return False
+
+
+# Receita
+class ReceitaRepository:
+    @staticmethod
+    def __init__(self, db: Session):
+        self.db = db
+
+    @staticmethod
+    def listaReceitas(db: Session) -> list[Receita]:
+        return db.query(Receita).all()
+    # 
+    @staticmethod
+    def listaReceitasId(db: Session, id: int) -> Receita:
+        return db.query(Receita).filter(Receita.id_receita == id).first()
+    # Criação de um receita
+    @staticmethod
+    def create(db: Session, receita: Receita) -> Receita:
+        if receita.id_receita:
+            db.merge(Receita)
+        else:
+            db.add(receita)
+        db.commit()
+        return receita
+    
+    @staticmethod
+    def update(db: Session, id_receita: int) -> bool:
+        return db.query(Receita).filter(Receita.id_receita == id_receita).first() is not None
+
+    @staticmethod
+    def delete(db: Session, id_receita: int) -> bool:
+        receita = db.query(Receita).filter(Receita.id_receita == id_receita).first()
+        if receita:
+            db.delete(receita)
+            db.commit()
+            return True
+        return False

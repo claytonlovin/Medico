@@ -45,7 +45,7 @@ class Paciente(Base):
     cpf = Column(String(20), nullable=False, unique=True)
     id_contato = Column(Integer, ForeignKey(Contato.id_contato), nullable=False)
     plano_saude = Column(String(200))
-
+ 
 class Medicamento(Base):
     __tablename__ = "medicamentos"
 
@@ -62,12 +62,12 @@ class Consulta(Base):
     id_paciente = Column(Integer, ForeignKey(Paciente.id_paciente), nullable=False)
     data_consulta = Column(String, nullable=False)
     data_retorno = Column(String, nullable=True)
-    id_covenio = Column(Integer, ForeignKey(Convenio.id_convenio), nullable=True)
+#    id_covenio = Column(Integer, ForeignKey(Convenio.id_convenio), nullable=True)
     id_especialidade = Column(Integer, ForeignKey(Especialidade.id_especialidade), nullable=False)
 
 class Receita(Base):
     __tablename__ = "receitas"
-
+ 
     id_receita = Column(Integer, primary_key=True, index=True)
     id_medicamento = Column(Integer, ForeignKey(Medicamento.id_medicamento), nullable=False)
     id_paciente = Column(Integer, ForeignKey(Paciente.id_paciente), nullable=False)
